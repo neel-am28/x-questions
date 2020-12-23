@@ -1,0 +1,58 @@
+<!-- Iclude header file here -->
+<%- include('includes/header') %>
+    <!-- header section -->
+    <div class="header">
+        <div class="container">
+            <div class="logo"><span class="ten">10</span>Questions</div>
+            <div class="timer">
+                <span class="time-label">Time left: </span>
+                <span class="seconds">60s</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- main section -->
+    <div class="main container">
+        <h2 class="heading">How well do you know me?<br> Well, let's test it out &#128526;</h2>
+        <div class="question-section">
+            <% questions.forEach((question, index)=> { %>
+                <form action="/score" method="POST">
+                    <div id="question-<%= index+1 %>" class="question-<%= index+1 %> ques">
+                        <h3 class="question">
+                            <%= question.question %>
+                        </h3>
+                        <div class="left">
+                            <label class="containerRadio">
+                                <%= question.option1 %>
+                                    <input type="radio" checked="checked" name="question<%=index+1  %>"
+                                        value="<%= question.option1 %>">
+                                    <span class="checkmark"></span>
+                            </label>
+                            <label class="containerRadio">
+                                <%= question.option2 %>
+                                    <input type="radio" name="question<%=index+1  %>" value="<%= question.option2 %>">
+                                    <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="right">
+                            <label class="containerRadio">
+                                <%= question.option3 %>
+                                    <input type="radio" name="question<%=index+1  %>" value="<%= question.option3 %>">
+                                    <span class="checkmark"></span>
+                            </label>
+                            <label class="containerRadio">
+                                <%= question.option4 %>
+                                    <input type="radio" name="question<%=index+1  %>" value="<%= question.option4 %>">
+                                    <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <% }) %>
+                        <div class="submitButton">
+                            <input type="submit" value="submit" class="btn submit">
+                        </div>
+                </form>
+        </div>
+    </div>
+    <!-- Iclude footer file here -->
+    <%- include('includes/footer') %>

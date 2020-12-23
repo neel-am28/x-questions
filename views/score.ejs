@@ -1,0 +1,29 @@
+<!-- Iclude header file here -->
+<%- include('includes/header') %>
+    <% if (score>= 70 && score <=100) { %>
+            <h1 class="heading">Wow, we really are the best of friends! &#128525;</h1>
+            <% } else if (score>=40 && score <= 69) {%>
+                    <h1 class="heading">Hmm, I guess we should talk more! &#128517;</h1>
+                    <% } else { %>
+                        <h1 class="heading">We need to go on a date! &#128523;</h1>
+                        <% } %>
+                            <h1 class="heading">You scored
+                                <span class="score-count" style="font-weight: 700;">
+                                    <%= score %>%
+                                </span>
+                            </h1>
+                            <script>
+                                let score = "<%= score %>";
+                                let output = 0;
+                                const timer = setInterval(() => {
+                                    document.querySelector('.score-count').textContent = `${output}%`;
+                                    if (output == score) {
+                                        clearInterval(timer)
+                                    } else {
+                                        output++;
+                                    }
+                                }, 10);
+                            </script>
+                            </body>
+
+                            </html>
