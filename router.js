@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const questionsCollection = require('./db').db().collection('quiz-data')
+const questionsCollection = require('./db').db().collection('game-data')
 
 
 router.get('/', (req, res) => {
@@ -13,12 +13,13 @@ router.post('/score', (req, res) => {
     questionsCollection.find().toArray((err, questions) => {
         let score = 0;
         const correctAnswers = [];
-        questions.forEach((question, index) => {
+        questions.forEach((question) => {
             correctAnswers.push(question.correctAnswer);
         })
-        const userAnswers = Object.values(req.body);
+
+        let userAnswers = Object.values(req.body);
         userAnswers.forEach((answer, index) => {
-            if (answer === correctAnswers[index]) {
+            if (answer == correctAnswers[index]) {
                 score += 10;
             }
         })
@@ -26,4 +27,7 @@ router.post('/score', (req, res) => {
     })
 })
 
+router.get('/score', (req, res) => {
+    res.render('score', { score: 0 })
+})
 module.exports = router
