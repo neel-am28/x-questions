@@ -4,7 +4,7 @@ const current = document.querySelector('.current');
 const header = document.querySelector('.header');
 
 // Timer feature
-let i = 10;
+let i = 30;
 const timerSeconds = setInterval(() => {
     i--;
     seconds.innerHTML = `${i}s`;
