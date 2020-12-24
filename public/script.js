@@ -1,8 +1,7 @@
 const seconds = document.querySelector('.seconds');
 const submit = document.querySelector('.submit');
 const current = document.querySelector('.current');
-const header = document.querySelector('.header');
-// Timer feature
+const header = document.querySelector('.header');// Timer feature
 let i = 60;
 const timerSeconds = setInterval(() => {
     i--;
